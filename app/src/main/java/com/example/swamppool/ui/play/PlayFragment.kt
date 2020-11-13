@@ -1,3 +1,7 @@
+/*
+
+ */
+
 package com.example.swamppool.ui.play
 
 import android.os.Bundle
@@ -7,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.swamppool.R
 
 class PlayFragment : Fragment() {
@@ -19,8 +23,7 @@ class PlayFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        playViewModel =
-                ViewModelProviders.of(this).get(PlayViewModel::class.java)
+        playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_play, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         playViewModel.text.observe(viewLifecycleOwner, Observer {
