@@ -1,13 +1,13 @@
-package com.example.swamppool.ui.notifications
+package com.example.swamppool.ui.play
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class PlayViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is play Fragment"
     }
     val text: LiveData<String> = _text
 }
