@@ -1,6 +1,10 @@
 <resources>
+    <!--Titles-->
     <string name="app_name">Swamp Pool</string>
     <string name="title_play">Play</string>
     <string name="title_rules">Swamp Rules</string>
     <string name="title_history">History</string>
+
+    <!--Play fragment-->
+    <string name="play_now">Get Random Number</string>
 </resources>
