@@ -32,6 +32,8 @@ class PlayFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_play, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
 
+        var myToast = Toast.makeText(activity, "Test Toast", Toast.LENGTH_SHORT)
+
         val button: Button = root.findViewById(R.id.button)
 
         var list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
@@ -45,7 +47,8 @@ class PlayFragment : Fragment() {
                 // val random = (1..15).random()
                 val random = list.random()
                 list.remove(random)
-                Toast.makeText(activity, random.toString(), Toast.LENGTH_SHORT).show()
+                myToast = Toast.makeText(activity, random.toString(), Toast.LENGTH_SHORT)
+                myToast.show()
                 textView.text = random.toString()
                 var remaining: String = ""
                 for (i in list) {
@@ -61,6 +64,12 @@ class PlayFragment : Fragment() {
             // Reset list to include all balls again.
             list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
             textView.text = "New Game."
+        }
+
+        val btnHide: Button = root.findViewById(R.id.btn_hide)
+        btnHide.setOnClickListener{
+            myToast.cancel()
+            textView.text = "Next number..."
         }
 
         playViewModel.text.observe(viewLifecycleOwner, Observer {
