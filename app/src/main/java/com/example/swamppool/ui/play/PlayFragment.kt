@@ -51,9 +51,16 @@ class PlayFragment : Fragment() {
                 for (i in list) {
                     remaining += "$i, "
                 }
-                remaining = remaining.dropLast(2)
+                remaining = remaining.dropLast(2) // Remove the final ", " from the string.
                 Log.i("PLAY - button.OnClick - else", "Numbers remaining: $remaining")
             }
+        }
+
+        val btnNewGame: Button = root.findViewById(R.id.btn_newGame)
+        btnNewGame.setOnClickListener{
+            // Reset list to include all balls again.
+            list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+            textView.text = "New Game."
         }
 
         playViewModel.text.observe(viewLifecycleOwner, Observer {
