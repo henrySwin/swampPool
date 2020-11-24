@@ -7,4 +7,9 @@
 
     <!--Play fragment-->
     <string name="play_now">Get Random Number</string>
+
+    <!--Rules fragment-->
+    <string name="rule1">1. If your ball goes into the pocket, you\'ve lost. You must announce this to the other players. Do not take any further shots.</string>
+    <string name="rule2">2. If you sink a ball (except your own!), then take an additional shot.</string>
+    <string name="rule3">3. If you commit a foul, then the next player takes an additional shot.</string>
 </resources>

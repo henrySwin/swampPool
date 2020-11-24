@@ -21,9 +21,9 @@ class RulesFragment : Fragment() {
     ): View? {
         rulesViewModel = ViewModelProvider(this).get(RulesViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_rules, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
+
         rulesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
