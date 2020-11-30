@@ -6,11 +6,23 @@
     <string name="title_history">History</string>
 
     <!--Play fragment-->
+    <string name="new_game">New Game</string>
+
     <string name="play_now">Get\n#</string>
     <string name="no_balls">No\nBalls\nLeft</string>
 
+    <string name="next_player">Next Player</string>
+
     <!--Rules fragment-->
-    <string name="rule1">1. If your ball goes into the pocket, you\'ve lost. You must announce this to the other players. Do not take any further shots.</string>
-    <string name="rule2">2. If you sink a ball (except your own!), then take an additional shot.</string>
-    <string name="rule3">3. If you commit a foul, then the next player takes an additional shot.</string>
+    <string name="rule1">
+        1. If your ball goes into the pocket, you\'ve lost. You must announce this to the other players. Do not take any further shots.
+    </string>
+    <string name="rule2">
+        2. If you sink a ball (except your own!), then take an additional shot.\n
+        \t\tIf you sink more than one ball in a single shot, you only get one additional shot.
+    </string>
+    <string name="rule3">
+        3. If you commit a foul, then the next player takes an additional shot.\n
+        \t\tIf you hit the winning shot, and the cue ball goes into the pocket afterwards, you still win.
+    </string>
 </resources>

@@ -41,11 +41,8 @@ class PlayFragment : Fragment() {
         val btnHide: Button = root.findViewById(R.id.btn_hide)
 
         button.setOnClickListener{
-            if (list.isEmpty()) {
-                button.text = getString(R.string.no_balls);
-                Log.i("PLAY - button.OnClick - if", "No balls left")
-            }
-            else {
+
+            //else {
                 // val random = (1..15).random()
                 val random = list.random()
                 list.remove(random)
@@ -61,7 +58,7 @@ class PlayFragment : Fragment() {
 
                 btnHide.isEnabled = true
                 button.isEnabled = false
-            }
+            //}
         }
 
         // New Game button.
@@ -79,11 +76,19 @@ class PlayFragment : Fragment() {
 
         // Next Player button.
         btnHide.setOnClickListener{
-            //myToast.cancel()
-            button.text = getString(R.string.play_now)
-
+            // Disable button regardless of whether there's any balls left or not.
             btnHide.isEnabled = false
-            button.isEnabled = true
+
+            if (list.isEmpty()) {
+                button.text = getString(R.string.no_balls);
+                Log.i("PLAY - button.OnClick - if", "No balls left")
+            }
+            else {
+                //myToast.cancel()
+                button.text = getString(R.string.play_now)
+
+                button.isEnabled = true
+            }
         }
 
         playViewModel.text.observe(viewLifecycleOwner, Observer {
