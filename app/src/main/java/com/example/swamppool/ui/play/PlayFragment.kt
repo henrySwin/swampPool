@@ -30,50 +30,64 @@ class PlayFragment : Fragment() {
     ): View? {
         playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_play, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        //val textView: TextView = root.findViewById(R.id.text_home)
 
         var myToast = Toast.makeText(activity, "Test Toast", Toast.LENGTH_SHORT)
 
-        val button: Button = root.findViewById(R.id.button)
-
         var list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
-        button.setOnClickListener{
 
+        val btnNewGame: Button = root.findViewById(R.id.btn_newGame)
+        val button: Button = root.findViewById(R.id.button)
+        val btnHide: Button = root.findViewById(R.id.btn_hide)
+
+        button.setOnClickListener{
             if (list.isEmpty()) {
-                textView.text = "No balls left to choose from."
+                button.text = getString(R.string.no_balls);
                 Log.i("PLAY - button.OnClick - if", "No balls left")
             }
             else {
                 // val random = (1..15).random()
                 val random = list.random()
                 list.remove(random)
-                myToast = Toast.makeText(activity, random.toString(), Toast.LENGTH_SHORT)
-                myToast.show()
-                textView.text = random.toString()
+                //myToast = Toast.makeText(activity, random.toString(), Toast.LENGTH_SHORT)
+                //myToast.show()
+                button.text = random.toString()
                 var remaining: String = ""
                 for (i in list) {
                     remaining += "$i, "
                 }
                 remaining = remaining.dropLast(2) // Remove the final ", " from the string.
                 Log.i("PLAY - button.OnClick - else", "Numbers remaining: $remaining")
+
+                btnHide.isEnabled = true
+                button.isEnabled = false
             }
         }
 
-        val btnNewGame: Button = root.findViewById(R.id.btn_newGame)
+        // New Game button.
         btnNewGame.setOnClickListener{
             // Reset list to include all balls again.
             list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
-            textView.text = "New Game."
+            button.text = getString(R.string.play_now)
+
+            myToast = Toast.makeText(activity, "New Game", Toast.LENGTH_SHORT)
+            myToast.show()
+
+            btnHide.isEnabled = false
+            button.isEnabled = true
         }
 
-        val btnHide: Button = root.findViewById(R.id.btn_hide)
+        // Next Player button.
         btnHide.setOnClickListener{
-            myToast.cancel()
-            textView.text = "Next number..."
+            //myToast.cancel()
+            button.text = getString(R.string.play_now)
+
+            btnHide.isEnabled = false
+            button.isEnabled = true
         }
 
         playViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }

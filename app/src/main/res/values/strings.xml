@@ -6,7 +6,8 @@
     <string name="title_history">History</string>
 
     <!--Play fragment-->
-    <string name="play_now">Get Random Number</string>
+    <string name="play_now">Get\n#</string>
+    <string name="no_balls">No\nBalls\nLeft</string>
 
     <!--Rules fragment-->
     <string name="rule1">1. If your ball goes into the pocket, you\'ve lost. You must announce this to the other players. Do not take any further shots.</string>
