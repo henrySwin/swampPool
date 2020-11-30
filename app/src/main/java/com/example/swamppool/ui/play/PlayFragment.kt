@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.swamppool.R
-import kotlin.random.Random
 
 class PlayFragment : Fragment() {
 
@@ -30,35 +29,36 @@ class PlayFragment : Fragment() {
     ): View? {
         playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_play, container, false)
-        //val textView: TextView = root.findViewById(R.id.text_home)
 
-        var myToast = Toast.makeText(activity, "Test Toast", Toast.LENGTH_SHORT)
+        var myToast: Toast = Toast.makeText(activity, "Test Toast", Toast.LENGTH_SHORT)
 
         var list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+
+        var playerCount: Int = 0;
+        val txtPlayerCount: TextView = root.findViewById(R.id.text_playerCount)
+        txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
         val btnNewGame: Button = root.findViewById(R.id.btn_newGame)
         val button: Button = root.findViewById(R.id.button)
         val btnHide: Button = root.findViewById(R.id.btn_hide)
 
         button.setOnClickListener{
+            val random: Int = list.random()
+            list.remove(random)
+            button.text = random.toString()
+            playerCount += 1
+            txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
-            //else {
-                // val random = (1..15).random()
-                val random = list.random()
-                list.remove(random)
-                //myToast = Toast.makeText(activity, random.toString(), Toast.LENGTH_SHORT)
-                //myToast.show()
-                button.text = random.toString()
-                var remaining: String = ""
-                for (i in list) {
-                    remaining += "$i, "
-                }
-                remaining = remaining.dropLast(2) // Remove the final ", " from the string.
-                Log.i("PLAY - button.OnClick - else", "Numbers remaining: $remaining")
+            // Logcat:
+            var remaining: String = ""
+            for (i in list) {
+                remaining += "$i, "
+            }
+            remaining = remaining.dropLast(2) // Remove the final ", " from the string.
+            Log.i("PLAY - button.OnClick - else", "Numbers remaining: $remaining")
 
-                btnHide.isEnabled = true
-                button.isEnabled = false
-            //}
+            btnHide.isEnabled = true
+            button.isEnabled = false
         }
 
         // New Game button.
@@ -66,12 +66,14 @@ class PlayFragment : Fragment() {
             // Reset list to include all balls again.
             list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
             button.text = getString(R.string.play_now)
-
-            myToast = Toast.makeText(activity, "New Game", Toast.LENGTH_SHORT)
-            myToast.show()
+            playerCount = 0
+            txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
             btnHide.isEnabled = false
             button.isEnabled = true
+
+            myToast = Toast.makeText(activity, "New Game", Toast.LENGTH_SHORT)
+            myToast.show()
         }
 
         // Next Player button.
@@ -80,7 +82,7 @@ class PlayFragment : Fragment() {
             btnHide.isEnabled = false
 
             if (list.isEmpty()) {
-                button.text = getString(R.string.no_balls);
+                button.text = getString(R.string.no_balls)
                 Log.i("PLAY - button.OnClick - if", "No balls left")
             }
             else {

@@ -6,6 +6,9 @@
     <string name="title_history">History</string>
 
     <!--Play fragment-->
+    <string name="init_player_count">Player Count: 10</string>
+    <string name="player_count">Player Count: %1$d</string>
+
     <string name="new_game">New Game</string>
 
     <string name="play_now">Get\n#</string>
