@@ -4,6 +4,7 @@
 
 package com.example.swamppool.ui.play
 
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,9 +23,9 @@ class PlayFragment : Fragment() {
     private lateinit var playViewModel: PlayViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
 
     ): View? {
         playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
@@ -32,7 +33,7 @@ class PlayFragment : Fragment() {
 
         var myToast: Toast = Toast.makeText(activity, "Test Toast", Toast.LENGTH_SHORT)
 
-        var list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+        var list = mutableListOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
         var playerCount: Int = 0;
         val txtPlayerCount: TextView = root.findViewById(R.id.text_playerCount)
@@ -40,9 +41,13 @@ class PlayFragment : Fragment() {
 
         val btnNewGame: Button = root.findViewById(R.id.btn_newGame)
         val button: Button = root.findViewById(R.id.button)
-        val btnHide: Button = root.findViewById(R.id.btn_hide)
+        val btnNextPlayer: Button = root.findViewById(R.id.btn_nextPlayer)
 
         button.setOnClickListener{
+            // Save and Log when the game started (first number picked).
+            val startTime: Calendar = Calendar.getInstance()
+            Log.i("PLAY - Calendar", "Game started at: ${startTime.time}")
+
             val random: Int = list.random()
             list.remove(random)
             button.text = random.toString()
@@ -57,19 +62,23 @@ class PlayFragment : Fragment() {
             remaining = remaining.dropLast(2) // Remove the final ", " from the string.
             Log.i("PLAY - button.OnClick - else", "Numbers remaining: $remaining")
 
-            btnHide.isEnabled = true
+            btnNextPlayer.isEnabled = true
             button.isEnabled = false
         }
 
         // New Game button.
         btnNewGame.setOnClickListener{
+            // Save and Log when the game finished (New Game clicked).
+            val endTime: Calendar = Calendar.getInstance()
+            Log.i("PLAY - Calendar", "Game finished at: ${endTime.time}")
+
             // Reset list to include all balls again.
-            list = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+            list = mutableListOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
             button.text = getString(R.string.play_now)
             playerCount = 0
             txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
-            btnHide.isEnabled = false
+            btnNextPlayer.isEnabled = false
             button.isEnabled = true
 
             myToast = Toast.makeText(activity, "New Game", Toast.LENGTH_SHORT)
@@ -77,9 +86,9 @@ class PlayFragment : Fragment() {
         }
 
         // Next Player button.
-        btnHide.setOnClickListener{
+        btnNextPlayer.setOnClickListener{
             // Disable button regardless of whether there's any balls left or not.
-            btnHide.isEnabled = false
+            btnNextPlayer.isEnabled = false
 
             if (list.isEmpty()) {
                 button.text = getString(R.string.no_balls)
