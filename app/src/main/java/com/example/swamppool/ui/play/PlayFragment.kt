@@ -35,7 +35,7 @@ class PlayFragment : Fragment() {
 
         var list = mutableListOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
-        var playerCount: Int = 0;
+        var playerCount: Int = 0
         val txtPlayerCount: TextView = root.findViewById(R.id.text_playerCount)
         txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
@@ -51,6 +51,31 @@ class PlayFragment : Fragment() {
             val random: Int = list.random()
             list.remove(random)
             button.text = random.toString()
+
+            button.setTextColor(resources.getColor(R.color.colorBlack))                  // Black (default).
+            when (random) {
+                // Solids:
+                1 -> button.setBackgroundColor(resources.getColor(R.color.colorYellow))  // Yellow
+                2 -> button.setBackgroundColor(resources.getColor(R.color.colorBlue))    // Blue
+                3 -> button.setBackgroundColor(resources.getColor(R.color.colorRed))     // Red
+                4 -> button.setBackgroundColor(resources.getColor(R.color.colorPurple))  // Purple
+                5 -> button.setBackgroundColor(resources.getColor(R.color.colorOrange))  // Orange
+                6 -> button.setBackgroundColor(resources.getColor(R.color.colorGreen))   // Green
+                7 -> button.setBackgroundColor(resources.getColor(R.color.colorBrown))   // Brown
+                8 -> {
+                    button.setBackgroundColor(resources.getColor(R.color.colorBlack))    // Black
+                    button.setTextColor(resources.getColor(R.color.colorWhite))          // White
+                }
+                // Stripes:
+                9 -> button.setBackgroundColor(resources.getColor(R.color.colorYellow))  // Yellow
+                10 -> button.setBackgroundColor(resources.getColor(R.color.colorBlue))   // Blue
+                11 -> button.setBackgroundColor(resources.getColor(R.color.colorRed))    // Red
+                12 -> button.setBackgroundColor(resources.getColor(R.color.colorPurple)) // Purple
+                13 -> button.setBackgroundColor(resources.getColor(R.color.colorOrange)) // Orange
+                14 -> button.setBackgroundColor(resources.getColor(R.color.colorGreen))  // Green
+                15 -> button.setBackgroundColor(resources.getColor(R.color.colorBrown))  // Brown
+            }
+
             playerCount += 1
             txtPlayerCount.text = getString(R.string.player_count, playerCount)
 
@@ -80,6 +105,9 @@ class PlayFragment : Fragment() {
 
             btnNextPlayer.isEnabled = false
             button.isEnabled = true
+            button.setBackgroundColor(resources.getColor(R.color.colorDefaultGrey)) // Light grey (default).
+            button.setTextColor(resources.getColor(R.color.colorBlack))             // Black (default).
+            button.setTextSize(48F)
 
             myToast = Toast.makeText(activity, "New Game", Toast.LENGTH_SHORT)
             myToast.show()
@@ -90,14 +118,18 @@ class PlayFragment : Fragment() {
             // Disable button regardless of whether there's any balls left or not.
             btnNextPlayer.isEnabled = false
 
+            // Reset button colours.
+            button.setBackgroundColor(resources.getColor(R.color.colorDefaultGrey)) // Light grey (default).
+            button.setTextColor(resources.getColor(R.color.colorBlack))             // Black (default).
+
             if (list.isEmpty()) {
+                button.setTextSize(14F)
                 button.text = getString(R.string.no_balls)
                 Log.i("PLAY - button.OnClick - if", "No balls left")
             }
             else {
                 //myToast.cancel()
                 button.text = getString(R.string.play_now)
-
                 button.isEnabled = true
             }
         }

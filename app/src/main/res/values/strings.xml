@@ -11,7 +11,7 @@
 
     <string name="new_game">New Game</string>
 
-    <string name="play_now">Get\n#</string>
+    <string name="play_now">\?</string>
     <string name="no_balls">No\nBalls\nLeft</string>
 
     <string name="next_player">Next Player</string>
