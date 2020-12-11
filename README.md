@@ -4,9 +4,9 @@ Android App to play Kelly Pool with custom Swamp rules.
 
 ## how to install on your Android device
 1. in Android Studio, select:
-  * Build
-  * Build Bundle(s) / APK(s)
-  * Build APK(s)
+   * Build
+   * Build Bundle(s) / APK(s)
+   * Build APK(s)
 2. select 'locate' in the bottom-right corner once build has finished
 3. copy .apk to anywhere on your Android phone
 4. using your phone, open My Files
