@@ -5,6 +5,7 @@
     <string name="title_rules">Swamp Rules</string>
     <string name="title_history">History</string>
 
+
     <!--Play fragment-->
     <string name="init_player_count">Player Count: 10</string>
     <string name="player_count">Player Count: %1$d</string>
@@ -15,6 +16,24 @@
     <string name="no_balls">No\nBalls\nLeft</string>
 
     <string name="next_player">Next Player</string>
+    
+    <!--Ball nicknames-->
+    <string name="ball_1">NAMBAWAN</string>                 <!--Yellow-->
+    <string name="ball_2">Bluetooth</string>                <!--Blue-->
+    <string name="ball_3">The Colonel</string>              <!--Red-->
+    <string name="ball_4">The Trickster</string>            <!--Purple-->
+    <string name="ball_5">The Cowboy</string>               <!--Orange-->
+    <string name="ball_6">The Swamp Dweller</string>        <!--Green-->
+    <string name="ball_7">Rusty</string>                    <!--Brown-->
+    <string name="ball_8">The Enigma</string>               <!--Black-->
+    <string name="ball_9">Pineapple</string>                <!--Yellow-->
+    <string name="ball_10">Alpha Sapphire</string>          <!--Blue-->
+    <string name="ball_11">Strawberries & Cream</string>    <!--Red-->
+    <string name="ball_12">Purple Rain</string>             <!--Purple-->
+    <string name="ball_13">Kowabunga Dude</string>          <!--Orange-->
+    <string name="ball_14">The Bushranger</string>          <!--Green-->
+    <string name="ball_15">Last But Not Least</string>      <!--Brown-->
+
 
     <!--Rules fragment-->
     <string name="rule1">
